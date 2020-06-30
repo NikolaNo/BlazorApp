@@ -1,0 +1,56 @@
+﻿@page "/arraymovezeroes"
+<h3>ArrayMoveZeroes</h3>
+<p>TASK : Array move zeroes to the end</p>
+<hr class="solid">
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>INPUT = { 1, 2, 0, 3, 0, 4 }</a>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="MoveZeroes">Run Code</button>
+        <br />
+        <p>OUTPUT : </p>
+        <p>@result</p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/ArrayMoveZeroes.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+@code {
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+
+    int[] nums = { 1, 2, 0, 3, 0, 4 };
+    string result = "";
+    public void MoveZeroes()
+    {
+        int zerocount = 0;
+        int numlength = nums.Length;
+
+
+        for (int i = 0; i < numlength; i++)
+        {
+            if (nums[i] == 0) continue;
+
+            nums[zerocount] = nums[i];
+            zerocount++;
+        }
+
+        for (int i = zerocount; i < numlength; i++)
+        {
+            nums[i] = 0;
+        }
+
+        foreach (var item in nums)
+        {
+            result += item + " ";
+        }
+    }
+
+}

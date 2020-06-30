@@ -1,0 +1,56 @@
+﻿@page "/stringreverse"
+
+<h3>StringReverse</h3>
+<p>TASK : reverse the string</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>INPUT = </a>
+        <input type="text" @bind="str" />
+
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="rever">Run Code</button>
+        <br />
+        <p>OUTPUT :</p>
+        <p>@reverse</p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/StringReverse.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+@code {
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+
+    public string str;
+    public string reverse;
+
+    public void rever()
+    {
+        var r = str.Reverse();
+
+        foreach (var item in r)
+        {
+            reverse = reverse + item;
+        }
+    }
+
+    public void ReverseString(char[] s)
+    {
+
+        int left = 0, right = s.Length - 1;
+        while (left < right)
+        {
+            char tmp = s[left];
+            s[left++] = s[right];
+            s[right--] = tmp;
+        }
+    }
+
+}

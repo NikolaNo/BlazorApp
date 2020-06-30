@@ -1,0 +1,98 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">ToyBox</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNav = !expandSubNav">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Arrays
+            </NavLink>
+        </li>
+        @if (expandSubNav)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="arrayremoveduplicates">
+                    <span class="oi oi-plus" aria-hidden="true"></span> RemoveDuplicate
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="plusone">
+                    <span class="oi oi-plus" aria-hidden="true"></span> PlusOne
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="arraymovezeroes">
+                    <span class="oi oi-plus" aria-hidden="true"></span> MoveZeroes
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="arraytwosum">
+                    <span class="oi oi-plus" aria-hidden="true"></span> TwoSum
+                </NavLink>
+            </li>
+        }
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavString = !expandSubNavString">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Strings
+            </NavLink>
+        </li>
+        @if (expandSubNavString)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="stringreverse">
+                    <span class="oi oi-plus" aria-hidden="true"></span> StringReverse
+                </NavLink>
+            </li>
+
+        }
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavStringAlgo = !expandSubNavStringAlgo">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Algorithms
+            </NavLink>
+        </li>
+        @if (expandSubNavStringAlgo)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="threesum">
+                    <span class="oi oi-plus" aria-hidden="true"></span> ThreeSum
+                </NavLink>
+            </li>
+
+        }
+
+        @*<li class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Toys
+            </NavLink>
+        </li>*@
+
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private bool expandSubNav;
+    private bool expandSubNavString;
+    private bool expandSubNavStringAlgo;
+
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

@@ -1,0 +1,60 @@
+﻿@page "/arrayremoveduplicates"
+<h3>ArrayRemoveDuplicates</h3>
+<p>TASK : Array length without duplicates</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>INPUT = { 1, 2, 3, 4, 4 }</a>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="RemoveDuplicates">Run Code</button>
+        <br />
+        <p>OUTPUT : </p>
+        <p>@resultIndex</p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/RemoveDuplicates.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+
+@code {
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+
+    [Parameter]
+    public int f { get; set; } = 0;
+
+    static int a { get; set; } = 1;
+    static int b { get; set; } = 2;
+    static int c { get; set; } = 3;
+    static int d { get; set; } = 4;
+    static int e { get; set; } = 4;
+
+    public int[] nums { get; set; } = { a, b, c, d, e };
+
+    public int resultIndex = 0;
+
+    public void RemoveDuplicates()
+    {
+
+        int n = nums.Length;
+
+        resultIndex = 0;
+        for (int i = 1; i < n; i++)
+        {
+            if (nums[i - 1] == nums[i]) continue;
+
+            resultIndex += 1;
+            nums[resultIndex] = nums[i];
+        }
+
+        resultIndex = resultIndex + 1;
+    }
+
+
+}

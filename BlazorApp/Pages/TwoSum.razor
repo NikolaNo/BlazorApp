@@ -1,0 +1,52 @@
+﻿@page "/arraytwosum"
+<h3>TwoSum</h3>
+<p>TASK : Find the two numbers such that they add up to a specific target</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>INPUT = { 2, 7, 11, 15 }</a>
+
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="twoSum">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@res</strong></p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/TwoSum.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+
+    int[] nums = { 2, 7, 11, 15 };
+    int target = 9;
+    string res = "";
+
+
+    public void twoSum()
+    {
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                if (nums[i] == target - nums[j])
+                {
+                    res = Convert.ToString(nums[i]) + "," + Convert.ToString(nums[j]);
+                }
+            }
+        }
+
+    }
+
+
+}

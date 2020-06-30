@@ -1,0 +1,75 @@
+﻿@page "/counter"
+
+
+    <h1>Counter</h1>
+
+    <p>1.Current count: @currentCount</p>
+    <p>2.Sum : @sum</p>
+    <p>3.Reverse: @reverse</p>
+
+    <button class="btn btn-primary" @onclick="IncrementCount">1.Click me</button>
+    <br />
+    <input type="number" @bind="a" />
+    <input type="number" @bind="b" />
+    <button class="btn btn-primary" @onclick="sumnums">2.Sum</button>
+
+    <br />
+    <input type="text" @bind="str" />
+    <button class="btn btn-primary" @onclick="rever">3.Reverse</button>
+    <br />
+    <p> 4.Inches : </p>
+    <input type="number" @bind-value="@Inches" @bind-value:event="oninput" />
+    <br />
+    <p>Centimeters : @centimeters</p>
+
+
+    @code {
+        private int currentCount = 0;
+
+        [Parameter]
+        public int a { get; set; } = 0;
+
+        [Parameter]
+        public int b { get; set; } = 0;
+
+        [Parameter]
+        public string str { get; set; }
+
+        double inches = 1;
+
+        double centimeters = 2.54;
+
+        public string reverse;
+
+        private int sum = 0;
+
+        public double Inches
+        {
+            get => inches;
+            set
+            {
+                centimeters = value * 2.54;
+                inches = value;
+            }
+        }
+
+        public void rever()
+        {
+            var r = str.Reverse();
+
+            foreach (var item in r)
+            {
+                reverse = reverse + item;
+            }
+        }
+
+        public void sumnums()
+        {
+            sum = a + b;
+        }
+
+        private void IncrementCount()
+        {
+            currentCount++;
+        }
+    }
