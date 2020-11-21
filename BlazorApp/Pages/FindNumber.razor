@@ -1,0 +1,67 @@
+﻿@page "/findnumber"
+ <h3>FindNumber</h3>
+<p>TASK : find a number from a sum of two strings</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>Enter numbers = <input type="text" @bind="nums" /></a>
+        <a>try to find = <input type="number" @bind="numf" /></a>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="main">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@res</strong></p>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/listnums.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+@code {
+
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+    public string nums = "";
+
+    public int numf = 0;
+
+    public string res;
+
+    public void main()
+    {
+
+        List<int> listnums = new List<int>();
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            string a = nums.Substring(i, 1);
+
+            int b = Convert.ToInt32(a);
+
+            listnums.Add(b);
+
+        }
+
+        var arr = listnums.ToArray();
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            if (arr[i] == numf - arr[i - 1])
+            {
+                int[] resnums = { arr[i], arr[i - 1] };
+                foreach (var item in resnums)
+                {
+
+                    res = res + " " + item;
+                  
+                }
+
+            }
+        }
+    }
+
+}

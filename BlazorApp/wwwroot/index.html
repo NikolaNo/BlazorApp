@@ -5,13 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>BlazorApp</title>
-    <base href="/plusone/" />
+    <base href="/" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAITqkXnk8ZkmBsLjlhKBIX11SmE2cNNRY&v=3"></script>
+    <script src="_content/BlazorGoogleMaps/objectManager.js"></script>
+
 </head>
 
 <body>
-    <app>Loading...</app>
+    <app>
+        <div style="position:absolute; top:30vh; width:100%; text-align:center">
+            <h1>Blazor Toy Code</h1>
+            <p><i class="fas fa-spin fa-spinner"></i> The application is loading...</p>
+        </div>
+    </app>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

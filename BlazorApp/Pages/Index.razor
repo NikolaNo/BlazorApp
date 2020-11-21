@@ -1,9 +1,23 @@
 ﻿@page "/"
+@using System.Net.Http
+@using Newtonsoft.Json
+@inject HttpClient Http
 
-<h1>My code toybox!</h1>
+<h1 style="text-decoration: underline;position:center">My code toybox!</h1>
 <h5>* Code on display here is made to have an optimal time and space complexity (big O) *</h5>
 <p><strong>Examples :</strong></p>
+<p>(more code examples: <a href="https://leetcode.com/nova0/" target="_blank">leetcode</a>)</p>
 <hr class="solid">
+<h5>(calls REST api and displays data)</h5>
+<button class="btn btn-primary" @onclick="PrintWebApiResponse">Random joke :</button> - <button class="btn btn-primary" @onclick="PrintWebApiResponseCat">Random cat fact :</button> - <button class="btn btn-primary" @onclick="PrintWebApiResponseDog">Random internet dog picture :</button>
+<hr class="solid">
+<p>@res</p>
+<p>@res2</p>
+<hr class="solid">
+<p>@rescat</p>
+
+<div><img src="@resdog" Style="width:300px" /></div>
+
 <div style="display:flex;flex-wrap:wrap; justify-content: center;">
     <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
         <div class="card-header">
@@ -44,7 +58,80 @@
 {
     //[Parameter]
     //public string titles { get; set; } = "Enter text";
+    string res = "";
+    string res2 = "";
+    public string rescat;
+    public string resdog;
 
+
+    public class Flags
+    {
+        public bool nsfw { get; set; }
+        public bool religious { get; set; }
+        public bool political { get; set; }
+        public bool racist { get; set; }
+        public bool sexist { get; set; }
+
+    }
+
+    public class Root
+    {
+        public string category { get; set; }
+        public string type { get; set; }
+        public string setup { get; set; }
+        public string delivery { get; set; }
+        public Flags flags { get; set; }
+        public int id { get; set; }
+        public bool error { get; set; }
+
+    }
+
+
+    public class RootCat
+    {
+        public string fact { get; set; }
+        public int length { get; set; }
+
+    }
+
+    public class RootDog
+    {
+        public string message { get; set; }
+        //public int length { get; set; }
+
+    }
+
+    public async Task PrintWebApiResponse()
+    {
+
+        var response = await Http.GetStringAsync("https://sv443.net/jokeapi/v2/joke/Programming,Miscellaneous?blacklistFlags=racist,sexist");
+        Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
+
+
+        res = myDeserializedClass.setup;
+        res2 = myDeserializedClass.delivery;
+
+    }
+    public async Task PrintWebApiResponseCat()
+    {
+
+        var response = await Http.GetStringAsync("https://catfact.ninja/fact?max_length=240");
+        RootCat myDeserializedClass = JsonConvert.DeserializeObject<RootCat>(response);
+
+
+        rescat = myDeserializedClass.fact;
+
+    }
+    public async Task PrintWebApiResponseDog()
+    {
+
+        var response = await Http.GetStringAsync("https://dog.ceo/api/breeds/image/random");
+        RootDog myDeserializedClass = JsonConvert.DeserializeObject<RootDog>(response);
+
+
+        resdog = myDeserializedClass.message;
+
+    }
 
 
 }

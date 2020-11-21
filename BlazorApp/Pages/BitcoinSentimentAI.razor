@@ -1,0 +1,121 @@
+﻿@page "/bitcoinsentimentai"
+@using System.Net.Http
+@using Newtonsoft.Json
+
+@inject HttpClient Http
+@*@inherits BitcoinSentimentAIBase*@
+<h5 style="text-decoration: underline">Bitcoin SentimentAI</h5>
+<style>
+
+    #outerdiv {
+        width: 1220px;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    #innerIframe {
+        position: absolute;
+        top: -270px;
+        left: -70px;
+        width: 1300px;
+        height: 1450px;
+    }
+</style>
+<button class="btn btn-primary" @onclick="PrintWebApiResponseDog"><span class="glyphicon glyphicon-refresh"></span>Refresh</button><span>| BTC/USD :</span><strong> | 24h Ago: @pricebtcfirst</strong><strong style="color:gold"> | Now: @result </strong>
+@*<button class="btn btn-primary" @onclick="Scrape">Last Closing Price:</button><p>@lastPrice</p>*@
+<br />
+<hr class="solid">
+<div id="outerdiv">
+    <iframe src="https://www.augmento.ai/bitcoin-sentiment/" id="innerIframe" scrolling="no"></iframe>
+</div>
+<hr class="solid">
+<h3 class="oi-underline">Chart Description</h3>
+<p>
+    Bitcoin (BTC) sentiment on social media.<br />
+    0 is bearish, 1 bullish. <br />
+    Data is collected from Twitter, Reddit and Bitcointalk and updates every hour. <br />
+    Hover over the score in the top graph to see the topics trending at that time. Click on the legend to isolate data sources.<br />
+    (Data is not my brainchild just the Blazor integration)
+</p>
+<p>
+    This shows sentiment data from several sources, posible way to read it as an Contrarian Elliot Wave Proponent
+    is to wait for the sentiment to get over bullish or over bearish and take the opposite trade.
+</p>
+<hr class="solid" />
+
+@*<input type="number" @bind="numberOfDays" />*@
+
+@*@foreach (var item in pricesbtc)
+{ 
+    @item
+}*@
+@code {
+    public static string result;
+
+    public static List<double> pricesbtc;
+
+    public static string pricebtcfirst;
+
+    public static string lastbtc;
+
+
+    public class Root
+    {
+        public string lprice { get; set; }
+        public string curr1 { get; set; }
+        public string curr2 { get; set; }
+
+    }
+
+    // RootBTC myDeserializedClassBTC = JsonConvert.DeserializeObject<RootBTC>(myJsonResponse); 
+    public class RootBTC
+    {
+        public List<List<double>> prices { get; set; }
+        public List<List<double>> market_caps { get; set; }
+        public List<List<double>> total_volumes { get; set; }
+    }
+
+    public static int numberOfDays = 1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await PrintWebApiResponseDog();
+        await PrintBTC();
+    }
+
+    public async Task PrintWebApiResponseDog()
+    {
+
+        var response = await Http.GetStringAsync("https://cex.io/api/last_price/BTC/USD");
+        Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
+
+
+        result = myDeserializedClass.lprice;
+    }
+
+    public async Task PrintBTC()
+    {
+        var responsebtc = await Http.GetStringAsync("https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1");
+
+        RootBTC myDeserializedClassBTC = JsonConvert.DeserializeObject<RootBTC>(responsebtc);
+
+        List<double> root = new List<double>();
+
+        foreach (var item in myDeserializedClassBTC.prices)
+        {
+            foreach(var pr in item) {
+
+                double dt;
+                dt = pr;
+                root.Add(dt);
+            }
+
+        }
+        pricebtcfirst = Convert.ToString(root[1]);
+        pricebtcfirst = pricebtcfirst.Substring(0, 8);
+
+        //lastbtc = Convert.ToString(pricesbtc.Last());
+
+    }
+}

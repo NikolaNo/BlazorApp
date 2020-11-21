@@ -1,0 +1,24 @@
+﻿@page "/bullsandcows"
+@inherits BullsAndCowsBase
+
+<h3>Bulls And Cows</h3>
+<p>Try to guess a number, if its in the right place you get a Bull if its not but it exists you get a Cow, you win when you have 4 Bulls</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <p>INPUT 4 digits: <input type="text" @bind="guess" /></p>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="GetHint">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@res</strong></p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/cowsandbulls.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+
+

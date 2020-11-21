@@ -1,0 +1,23 @@
+﻿@page "/attributesplatting"
+
+<AttributeSplattingChild InputAttributes="attributesFromParent" Value="Parent Value">
+</AttributeSplattingChild>
+<hr class="solid">
+<h3>CODE:</h3>
+<h4>Parrent</h4>
+<img src="img/parrent.PNG" alt="Image" />
+<hr class="solid">
+<h4>Child</h4>
+<img src="img/child.PNG" alt="Image" >
+
+@code {
+    [Parameter]
+    public Dictionary<string, object> attributesFromParent { get; set; } =
+        new Dictionary<string, object>()
+        {
+            { "required", "required" },
+            { "placeholder", "Parent Component Placeholder" },
+            { "size", "50" },
+            { "maxlength", "5" }
+                };
+}

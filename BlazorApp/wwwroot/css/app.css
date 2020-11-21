@@ -1,7 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
 a, .btn-link {
@@ -47,7 +47,7 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-image: linear-gradient(180deg, rgb(234 7 7) 0%, #69635f 70%);
 }
 
     .sidebar .top-row {
@@ -176,6 +176,10 @@ app {
         display: none;
     }
 
+    .imageThumbnail {
+        height: 200px;
+        width: auto;
+    }
     .sidebar .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;

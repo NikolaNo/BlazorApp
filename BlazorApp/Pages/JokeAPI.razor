@@ -1,0 +1,57 @@
+﻿@page "/joke"
+@using System.Net.Http
+@using Newtonsoft.Json
+
+@inject HttpClient Http
+
+<h3>JOKE: </h3>
+setup: @res
+delivery: @res2
+<hr class="solid">
+<button class="btn btn-primary" @onclick="PrintWebApiResponse">Run Code</button>
+<hr class="solid">
+
+
+@code {
+    
+    string res = "Joke";
+    string res2 = "Joke";
+
+
+    public class Flags
+    {
+        public bool nsfw { get; set; }
+        public bool religious { get; set; }
+        public bool political { get; set; }
+        public bool racist { get; set; }
+        public bool sexist { get; set; }
+
+    }
+
+    public class Root
+    {
+        public string category { get; set; }
+        public string type { get; set; }
+        public string setup { get; set; }
+        public string delivery { get; set; }
+        public Flags flags { get; set; }
+        public int id { get; set; }
+        public bool error { get; set; }
+
+    }
+
+    public async Task PrintWebApiResponse()
+    {
+
+        var response = await Http.GetStringAsync("https://sv443.net/jokeapi/v2/joke/Any");
+        Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
+
+
+        res = myDeserializedClass.setup;
+        res2 = myDeserializedClass.delivery;
+
+    }
+
+
+
+}

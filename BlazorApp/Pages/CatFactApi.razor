@@ -1,0 +1,36 @@
+﻿@page "/catfact"
+<h3>CatFactApi</h3>
+@using System.Net.Http
+@using Newtonsoft.Json
+
+@inject HttpClient Http
+
+<h3>Random cat: </h3>
+setup: @rescat
+<hr class="solid">
+<button class="btn btn-primary" @onclick="PrintWebApiResponseCat">Run Code</button>
+<hr class="solid">
+@code {
+
+    public string rescat;
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    public class Root
+    {
+        public string fact { get; set; }
+        public int length { get; set; }
+
+    }
+
+    public async Task PrintWebApiResponseCat()
+    {
+
+        var response = await Http.GetStringAsync("https://catfact.ninja/fact?max_length=240");
+        
+        Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
+
+
+        rescat = myDeserializedClass.fact;
+
+
+    }
+}

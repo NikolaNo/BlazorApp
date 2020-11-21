@@ -1,0 +1,57 @@
+﻿@page "/logestsubstring"
+<h3>Longest Substring</h3>
+<p>TASK :  find the length of the longest substring without repeating characters.</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <p>INPUT string: <input type="text" @bind="s" /></p>
+
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="LengthOfLongestSubstring">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@res</strong></p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/LogestSubstring.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+@code {
+
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+
+    string s = "";
+    int res = 0;
+
+
+
+    public void LengthOfLongestSubstring()
+    {
+        int n = s.Length;
+        HashSet<char> set = new HashSet<char>();
+
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n)
+        {
+            if (!set.Contains(s[j]))
+            {
+                set.Add(s[j++]);
+                ans = Math.Max(ans, j - i);
+            }
+            else
+            {
+                set.Remove(s[i++]);
+
+            }
+        }
+        res = ans;
+    }
+
+}

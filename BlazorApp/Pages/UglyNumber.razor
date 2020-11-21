@@ -1,0 +1,57 @@
+﻿@page "/uglynumber"
+<h3>PlusOne</h3>
+<p>TASK : Ugly numbers are positive numbers whose prime factors only include 2, 3, 5</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <a>INPUT = <input type="number" @bind="n" /></a>
+
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="NthUglyNumber">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@ret</strong></p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/uglynumber.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public string showcode = "display:none";
+    public void Show()
+    {
+        showcode = "display:flex";
+    }
+    public int n = 0;
+
+    int ret;
+
+    public void NthUglyNumber()
+    {
+
+        int x = 0;
+        int y = 0;
+        int z = 0;
+
+        int[] ugly = new int[n];
+
+        ugly[0] = 1;
+
+        int count = 0;
+        while (count < n - 1)
+        {
+            int next = Math.Min(2 * ugly[x], Math.Min(3 * ugly[y], 5 * ugly[z]));
+            ugly[++count] = next;
+            if (2 * ugly[x] == next) x++;
+            if (3 * ugly[y] == next) y++;
+            if (5 * ugly[z] == next) z++;
+        }
+
+        ret = ugly[n - 1];
+    }
+}

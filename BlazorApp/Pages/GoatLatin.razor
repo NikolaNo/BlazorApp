@@ -1,0 +1,24 @@
+﻿@page "/goatlatin"
+@inherits GoatLatinBase
+
+<h3>GoatLatin</h3>
+<p>Convert the sentence to "Goat Latin" (a made-up language.)</p>
+<hr class="solid">
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <p>INPUT string: <input type="text" @bind="s" /></p>
+        <hr class="solid">
+        <button class="btn btn-primary" @onclick="ToGoatLatin">Run Code</button>
+        <hr class="solid">
+        <p>OUTPUT :</p>
+        <p><strong>@res</strong></p>
+        <hr class="solid">
+
+        <button class="btn btn-primary" @onclick="Show">Show Code</button>
+        <div style="@showcode">
+            <img src="img/GoatLatin.PNG" alt="Image">
+        </div>
+    </div>
+</div>
+
+

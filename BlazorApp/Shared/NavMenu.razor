@@ -5,7 +5,7 @@
     </button>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass navbar navbar-light"  @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -14,8 +14,32 @@
         </li>
 
         <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavString = !expandSubNavString">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Strings
+            </NavLink>
+        </li>
+        @if (expandSubNavString)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="goatlatin">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Goat Latin
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="stringreverse">
+                    <span class="oi oi-plus" aria-hidden="true"></span> StringReverse
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="logestsubstring">
+                    <span class="oi oi-plus" aria-hidden="true"></span> LongestSubString
+                </NavLink>
+            </li>
+        }
+
+        <li class="nav-item px-3">
             <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNav = !expandSubNav">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Arrays
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> DataStructures
             </NavLink>
         </li>
         @if (expandSubNav)
@@ -23,6 +47,11 @@
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="arrayremoveduplicates">
                     <span class="oi oi-plus" aria-hidden="true"></span> RemoveDuplicate
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="datastructures">
+                    <span class="oi oi-plus" aria-hidden="true"></span> DFS & BFS
                 </NavLink>
             </li>
             <li class="nav-item px-3">
@@ -40,26 +69,16 @@
                     <span class="oi oi-plus" aria-hidden="true"></span> TwoSum
                 </NavLink>
             </li>
-        }
-
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavString = !expandSubNavString">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Strings
-            </NavLink>
-        </li>
-        @if (expandSubNavString)
-        {
             <li class="nav-item px-3">
-                <NavLink class="nav-link" href="stringreverse">
-                    <span class="oi oi-plus" aria-hidden="true"></span> StringReverse
+                <NavLink class="nav-link" href="rotatearray">
+                    <span class="oi oi-plus" aria-hidden="true"></span> RotateArray
                 </NavLink>
             </li>
-
         }
 
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavStringAlgo = !expandSubNavStringAlgo">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Algorithms
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Algorithms
             </NavLink>
         </li>
         @if (expandSubNavStringAlgo)
@@ -69,21 +88,116 @@
                     <span class="oi oi-plus" aria-hidden="true"></span> ThreeSum
                 </NavLink>
             </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="uglynumber">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Ugly number
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="findnumber">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Find number
+                </NavLink>
+            </li>
 
         }
 
-        @*<li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Toys
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavBlazor = !expandSubNavBlazor">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Blazor
             </NavLink>
-        </li>*@
+        </li>
+        @if (expandSubNavBlazor)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="attributesplatting">
+                    <span class="oi oi-plus" aria-hidden="true"></span> AttributeSplatting
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavBlazorMaps = !expandSubNavBlazorMaps">
+                    <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Blazor: Maps
+                </NavLink>
+            </li>
+            @if (expandSubNavBlazorMaps)
+            {
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="embededmap">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Maps Google
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="maps">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Maps Example
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="mapInfoWindow">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Maps Marker
+                    </NavLink>
+                </li>
 
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="embededmapbing">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Maps Bing
+                    </NavLink>
+                </li>
+
+            }
+
+        }
+
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavBlazorAI = !expandSubNavBlazorAI">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> AI
+            </NavLink>
+        </li>
+        @if (expandSubNavBlazorAI)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="textai">
+                    <span class="oi oi-plus" aria-hidden="true"></span> NLP AI
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="bitcoinsentimentai">
+                    <span class="oi oi-plus" aria-hidden="true"></span> BTC SA AI
+                </NavLink>
+            </li>
+
+            @*<li class="nav-item px-3">
+                <NavLink class="nav-link" href="sentimentai">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Sentiment AI
+                </NavLink>
+            </li>*@
+        }
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavBlazorCat = !expandSubNavBlazorCat">
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Games
+            </NavLink>
+        </li>
+        @if (expandSubNavBlazorCat)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="catgame">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Cat Maze
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="bullsandcows">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Bulls And Cows
+                </NavLink>
+            </li>
+        }
     </ul>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
 
+    private bool expandSubNavBlazorCat;
+    private bool expandSubNavBlazorAI;
+    private bool expandSubNavBlazorMaps;
+    private bool expandSubNavBlazor;
     private bool expandSubNav;
     private bool expandSubNavString;
     private bool expandSubNavStringAlgo;

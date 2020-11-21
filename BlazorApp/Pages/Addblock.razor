@@ -1,0 +1,31 @@
+﻿@page "/addblock"
+    @using System.Net;
+    <style>
+
+        #outerdiv {
+            width: 1220px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #innerIframe {
+            position: absolute;
+            top: -270px;
+            left: -70px;
+            width: 300px;
+            height: 1050px;
+        }
+    </style>
+    <h3>Addblock</h3>
+    <hr class="solid">
+    @if (0 == 0)
+    {
+        <div id="outerdiv">
+            <iframe src="https://astronomyara.com/" id="innerIframe" scrolling="no"></iframe>
+        </div>
+    }
+    @code {
+        WebClient client = new WebClient();
+        //string downloadString = client.DownloadData("https://astronomyara.com/");
+    }
