@@ -1,0 +1,29 @@
+﻿@page "/linqtable"
+
+@code {
+
+    private Person[] people;
+
+    //protected override void OnInitialized()
+    //{
+    //    people = PrintWebApiResponsePerson();
+    //}
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string City { get; set; }
+        public decimal Salary { get; set; }
+        public DateTime Birthdate { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}- {FirstName} {LastName} | {City} | {Birthdate.ToShortDateString()} | ${Salary}";
+        }
+    }
+
+
+
+    } 

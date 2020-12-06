@@ -15,7 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\images\microsoft.png" />
     <None Include="wwwroot\img\RemoveDuplicates.PNG" />
+    <None Include="wwwroot\WebDesign\Assets\css\main.css" />
+    <None Include="wwwroot\WebDesign\Assets\images\microsoft.png" />
+    <None Include="wwwroot\WebDesign\index.html" />
   </ItemGroup>
 
   <ItemGroup>
