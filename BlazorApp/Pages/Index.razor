@@ -19,7 +19,7 @@
 <div><img src="@resdog" Style="width:300px" /></div>
 
 <div style="display:flex;flex-wrap:wrap; justify-content: center;">
-    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
+    <div class="card m-3" style="min-width: 15rem; max-width:25.5%; ">
         <div class="card-header">
             <a>ThreeSum</a>
         </div>
@@ -29,7 +29,7 @@
                class="btn btn-primary m-1">View</a>
         </div>
     </div>
-    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
+    <div class="card m-3" style="min-width: 15rem; max-width:25.5%; ">
         <div class="card-header">
             <a>TwoSum</a>
         </div>
@@ -40,8 +40,7 @@
         </div>
     </div>
 
-    <div class="card m-3" style="        min-width: 18rem;
-        max-width: 25.5%;">
+    <div class="card m-3" style="min-width: 15rem;max-width: 25.5%;">
         <div class="card-header">
             <a>PlusOne</a>
         </div>
@@ -104,7 +103,7 @@
     public async Task PrintWebApiResponse()
     {
 
-        var response = await Http.GetStringAsync("https://sv443.net/jokeapi/v2/joke/Programming,Miscellaneous?blacklistFlags=racist,sexist");
+        var response = await Http.GetStringAsync("https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=racist,sexist");
         Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
 
 

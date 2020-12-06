@@ -15,11 +15,77 @@
 
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavString = !expandSubNavString">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Strings
+                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Toy Code
             </NavLink>
         </li>
         @if (expandSubNavString)
         {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="" style="color:white" @onclick="() => expandSubNav = !expandSubNav">
+                    <span class="" style="color:white" aria-hidden="true"></span>  -BoxOne
+                </NavLink>
+            </li>
+            @if (expandSubNav)
+            {
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="arrayremoveduplicates">
+                        <span class="oi oi-plus" aria-hidden="true"></span> RemoveDuplicate
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="datastructures">
+                        <span class="oi oi-plus" aria-hidden="true"></span> DFS & BFS
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="plusone">
+                        <span class="oi oi-plus" aria-hidden="true"></span> PlusOne
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="arraymovezeroes">
+                        <span class="oi oi-plus" aria-hidden="true"></span> MoveZeroes
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="arraytwosum">
+                        <span class="oi oi-plus" aria-hidden="true"></span> TwoSum
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="rotatearray">
+                        <span class="oi oi-plus" aria-hidden="true"></span> RotateArray
+                    </NavLink>
+                </li>
+            }
+            //}
+
+
+
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="" style="color:white" @onclick="() => expandSubNavStringAlgo = !expandSubNavStringAlgo">
+                    <span class="" style="color:white" aria-hidden="true"></span>  -BoxTwo
+                </NavLink>
+            </li>
+            @if (expandSubNavStringAlgo)
+            {
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="threesum">
+                        <span class="oi oi-plus" aria-hidden="true"></span> ThreeSum
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="uglynumber">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Ugly number
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="findnumber">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Find number
+                    </NavLink>
+                </li>
+
+            }
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="goatlatin">
                     <span class="oi oi-plus" aria-hidden="true"></span> Goat Latin
@@ -33,69 +99,6 @@
             <li class="nav-item px-3">
                 <NavLink class="nav-link" href="logestsubstring">
                     <span class="oi oi-plus" aria-hidden="true"></span> LongestSubString
-                </NavLink>
-            </li>
-        }
-
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNav = !expandSubNav">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> DataStructures
-            </NavLink>
-        </li>
-        @if (expandSubNav)
-        {
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="arrayremoveduplicates">
-                    <span class="oi oi-plus" aria-hidden="true"></span> RemoveDuplicate
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="datastructures">
-                    <span class="oi oi-plus" aria-hidden="true"></span> DFS & BFS
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="plusone">
-                    <span class="oi oi-plus" aria-hidden="true"></span> PlusOne
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="arraymovezeroes">
-                    <span class="oi oi-plus" aria-hidden="true"></span> MoveZeroes
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="arraytwosum">
-                    <span class="oi oi-plus" aria-hidden="true"></span> TwoSum
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="rotatearray">
-                    <span class="oi oi-plus" aria-hidden="true"></span> RotateArray
-                </NavLink>
-            </li>
-        }
-
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" style="color:white" @onclick="()=>expandSubNavStringAlgo = !expandSubNavStringAlgo">
-                <span class="oi oi-list-rich" style="color:white" aria-hidden="true"></span> Algorithms
-            </NavLink>
-        </li>
-        @if (expandSubNavStringAlgo)
-        {
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="threesum">
-                    <span class="oi oi-plus" aria-hidden="true"></span> ThreeSum
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="uglynumber">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Ugly number
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="findnumber">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Find number
                 </NavLink>
             </li>
 
