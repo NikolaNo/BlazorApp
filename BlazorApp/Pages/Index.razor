@@ -4,11 +4,10 @@
 @inject HttpClient Http
 
 <h2 style="text-decoration: underline;text-align: center;">My code toybox!</h2>
-<h5>* Code on display here is made to have an optimal time and space complexity (big O) *</h5>
-<p><strong>Examples :</strong></p>
-<p>(more code examples: <a href="https://leetcode.com/nova0/" target="_blank">leetcode</a>)</p>
+<h5>* The code displayed here is optimized for time and space complexity (big O). *</h5>
+<p>More code examples: <a href="https://leetcode.com/nova0/" target="_blank">leetcode</a></p>
 <hr class="solid">
-<h5>(calls REST api and displays data)</h5>
+<h5 style="text-align:center">Call REST Api and display data</h5>
 <button class="btn btn-primary" @onclick="PrintWebApiResponse">Random joke :</button> - <button class="btn btn-primary" @onclick="PrintWebApiResponseCat">Random cat fact :</button> - <button class="btn btn-primary" @onclick="PrintWebApiResponseDog">Random internet dog picture :</button>
 <hr class="solid">
 <p>@res</p>
@@ -18,7 +17,7 @@
 
 <div><img src="@resdog" Style="width:300px" /></div>
 
-
+<h3 style="text-decoration: underline;text-align: center;">App Examples</h3>
 <div style="display:flex;flex-wrap:wrap; justify-content: center;">
     <div class="card m-3" style="min-width: 18rem;max-width: 25.5%;">
         <div class="card-header">
@@ -33,6 +32,28 @@
 
     <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
         <div class="card-header">
+            <a>Rinkurisuto - Blazor Server</a>
+        </div>
+        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/snip7.PNG" />
+        <div class="card-footer text-center">
+            <a href="https://rinkurisuto.azurewebsites.net/"
+               class="btn btn-primary m-1" target="_blank">View</a>
+        </div>
+    </div>
+
+    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
+        <div class="card-header">
+            <a>Rinkurisuto - Mobile App</a>
+        </div>
+        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/snip9.PNG" />
+        <div class="card-footer text-center">
+            <a href="https://play.google.com/store/apps/details?id=net.azurewebsites.rinkurisuto.twa"
+               class="btn btn-primary m-1" target="_blank">View</a>
+        </div>
+    </div>
+
+    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
+        <div class="card-header">
             <a>Login with Azure AD</a>
         </div>
         <img class="card-img-top imageThumbnail" style="height:300px;" src="img/Login.PNG" />
@@ -41,34 +62,24 @@
         </div>
     </div>
 
-    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
+    <div class="card m-3" style="min-width: 18rem;max-width: 25.5%;">
         <div class="card-header">
-            <a>ThreeSum</a>
+            <a>Cat Maze - Javascript</a>
         </div>
-        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/ThreeSum.PNG" />
+        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/catmaze.PNG" />
         <div class="card-footer text-center">
-            <a href="/threesum"
-               class="btn btn-primary m-1">View</a>
-        </div>
-    </div>
-    <div class="card m-3" style="min-width: 18rem; max-width:25.5%; ">
-        <div class="card-header">
-            <a>TwoSum</a>
-        </div>
-        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/TwoSum.PNG" />
-        <div class="card-footer text-center">
-            <a href="/arraytwosum"
-               class="btn btn-primary m-1">View</a>
+            <a href="https://astronomyara.com/CatMaze/index.html"
+               class="btn btn-primary m-1" target="_blank">View</a>
         </div>
     </div>
     <div class="card m-3" style="min-width: 18rem;max-width: 25.5%;">
         <div class="card-header">
-            <a>PlusOne</a>
+            <a>Wordpress</a>
         </div>
-        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/PlusOne.PNG" />
+        <img class="card-img-top imageThumbnail" style="height:300px;" src="img/helm.jpg" />
         <div class="card-footer text-center">
-            <a href="/plusone"
-               class="btn btn-primary m-1">View</a>
+            <a href="https://astronomyara.com/"
+               class="btn btn-primary m-1" target="_blank">View</a>
         </div>
     </div>
 </div>

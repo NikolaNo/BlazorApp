@@ -5,7 +5,7 @@
     </button>
 </div>
 
-<div class="@NavMenuCssClass navbar navbar-light"  @onclick="ToggleNavMenu">
+<div class="navbar navbar-light"  @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
         <li class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -27,6 +27,11 @@
             </li>
             @if (expandSubNav)
             {
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="goatlatin">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Goat Latin
+                    </NavLink>
+                </li>
                 <li class="nav-item px-3">
                     <NavLink class="nav-link" href="arrayremoveduplicates">
                         <span class="oi oi-plus" aria-hidden="true"></span> RemoveDuplicate
@@ -70,6 +75,16 @@
             @if (expandSubNavStringAlgo)
             {
                 <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="stringreverse">
+                        <span class="oi oi-plus" aria-hidden="true"></span> StringReverse
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="logestsubstring">
+                        <span class="oi oi-plus" aria-hidden="true"></span> LongestSubString
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
                     <NavLink class="nav-link" href="threesum">
                         <span class="oi oi-plus" aria-hidden="true"></span> ThreeSum
                     </NavLink>
@@ -86,22 +101,6 @@
                 </li>
 
             }
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="goatlatin">
-                    <span class="oi oi-plus" aria-hidden="true"></span> Goat Latin
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="stringreverse">
-                    <span class="oi oi-plus" aria-hidden="true"></span> StringReverse
-                </NavLink>
-            </li>
-            <li class="nav-item px-3">
-                <NavLink class="nav-link" href="logestsubstring">
-                    <span class="oi oi-plus" aria-hidden="true"></span> LongestSubString
-                </NavLink>
-            </li>
-
         }
 
         <li class="nav-item px-3">
@@ -196,7 +195,7 @@
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
+    private bool collapseNavMenu = false;
 
     private bool expandSubNavBlazorCat;
     private bool expandSubNavBlazorAI;
@@ -207,10 +206,10 @@
     private bool expandSubNavStringAlgo;
 
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    //private string NavMenuCssClass => collapseNavMenu ? "collapse" : "null";
 
     private void ToggleNavMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        //collapseNavMenu = collapseNavMenu;
     }
 }
