@@ -4,7 +4,7 @@
 @inject HttpClient Http
 
 <h2 style="text-decoration: underline;text-align: center;">My code toybox!</h2>
-<h5>* The code displayed here is optimized for time and space complexity (big O). *</h5>
+@*<h5>* The code displayed here is optimized for time and space complexity (big O). *</h5>*@
 <p>More code examples: <a href="https://leetcode.com/nova0/" target="_blank">leetcode</a></p>
 <hr class="solid">
 <h5 style="text-align:center">Call REST Api and display data</h5>
@@ -101,7 +101,6 @@
         public bool political { get; set; }
         public bool racist { get; set; }
         public bool sexist { get; set; }
-
     }
 
     public class Root
@@ -113,7 +112,6 @@
         public Flags flags { get; set; }
         public int id { get; set; }
         public bool error { get; set; }
-
     }
 
 
@@ -121,22 +119,18 @@
     {
         public string fact { get; set; }
         public int length { get; set; }
-
     }
 
     public class RootDog
     {
         public string message { get; set; }
         //public int length { get; set; }
-
     }
 
     public async Task PrintWebApiResponse()
     {
-
         var response = await Http.GetStringAsync("https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=racist,sexist");
         Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(response);
-
 
         res = myDeserializedClass.setup;
         res2 = myDeserializedClass.delivery;
@@ -144,20 +138,16 @@
     }
     public async Task PrintWebApiResponseCat()
     {
-
         var response = await Http.GetStringAsync("https://catfact.ninja/fact?max_length=240");
         RootCat myDeserializedClass = JsonConvert.DeserializeObject<RootCat>(response);
-
 
         rescat = myDeserializedClass.fact;
 
     }
     public async Task PrintWebApiResponseDog()
     {
-
         var response = await Http.GetStringAsync("https://dog.ceo/api/breeds/image/random");
         RootDog myDeserializedClass = JsonConvert.DeserializeObject<RootDog>(response);
-
 
         resdog = myDeserializedClass.message;
 
