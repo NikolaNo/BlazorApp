@@ -1,0 +1,44 @@
+﻿@page "/equalheight"
+
+<h3>Min Steps to Make Piles Equal Height</h3>
+<p>Alexa is given n piles of equal or unequal heights.<br />
+In one step, Alexa can remove any number of boxes from the pile which has the maximum height and try to make it equal to the one which is just lower than the maximum height of the stack.<br />
+Determine the minimum number of steps required to make all of the piles equal in height.</p>
+<p>
+    Input: piles = [5, 2, 1]<br />
+    Output: 3<br />
+    Explanation:<br />
+    Step 1: reducing 5 -> 2 [2, 2, 1]<br />
+    Step 2: reducing 2 -> 1 [2, 1, 1]<br />
+    Step 3: reducing 2 -> 1 [1, 1, 1]<br />
+    So final number of steps required is 3.
+</p>
+<p>Input comma delimited numbers(1,2,3,4..)<input type="text" @bind="@input"/></p>
+
+@code {
+    string input;
+
+    public static int minSteps(int[] piles)
+    {
+        int len = piles.Length;
+        if (len <= 1) return 0;
+
+        Array.Sort(piles);
+
+        int res = 0;
+        int distinctNums = 0;
+
+        for (int i = 1; i < len; ++i)
+        {
+            if (piles[i] == piles[i - 1])
+            {
+                res += distinctNums;
+            }
+            ++distinctNums;
+            res += distinctNums;
+        }
+
+        return res;
+    }
+
+}

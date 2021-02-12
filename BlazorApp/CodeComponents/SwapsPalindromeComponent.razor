@@ -1,0 +1,158 @@
+﻿@page "/palindromeswaps"
+<h3>Min Adj. Swaps to Make a Palindrome</h3>
+<p>Given a string, what is the minimum number of adjacent swaps required to convert a string into a palindrome. If not possible, return -1.</p>
+<hr />
+<p>
+    Example 1:<br />
+    Input: "mamad"<br />
+    Output: 3<br />
+</p>
+<hr />
+
+<p>Input = <input type="text" @bind="@str" /></p>
+<button class="btn btn-primary" @onclick="Callswaps">Get</button>
+<hr />
+<p>Output = @output</p>
+<div style="display:@display">
+        <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <pre style="margin: 0; line-height: 125%"> <span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">getNoOfSwaps</span>(String s)
+    {
+        <span style="color: #008800; font-weight: bold">if</span> (s == <span style="color: #008800; font-weight: bold">null</span> || s.Length == <span style="color: #6600EE; font-weight: bold">0</span>) <span style="color: #008800; font-weight: bold">return</span> -<span style="color: #6600EE; font-weight: bold">1</span>;
+        <span style="color: #333399; font-weight: bold">int</span> totalSwaps = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+        <span style="color: #008800; font-weight: bold">if</span> (isShuffledPalindrome(s))
+        {
+        <span style="color: #333399; font-weight: bold">char</span>[] chars = s.ToCharArray();
+        <span style="color: #333399; font-weight: bold">int</span> p1 = <span style="color: #6600EE; font-weight: bold">0</span>, p2 = chars.Length - <span style="color: #6600EE; font-weight: bold">1</span>;
+
+        <span style="color: #008800; font-weight: bold">while</span> (p2 &gt; p1)
+            {
+        <span style="color: #008800; font-weight: bold">if</span> (chars[p1] != chars[p2])
+                {
+        <span style="color: #333399; font-weight: bold">int</span> k = p2;
+        <span style="color: #008800; font-weight: bold">while</span> (k &gt; p1 &amp;&amp; chars[k] != chars[p1]) k--;
+
+        <span style="color: #008800; font-weight: bold">if</span> (k == p1)
+                    { <span style="color: #888888">//When no matching character found</span>
+                        swap(chars, p1, p1 + <span style="color: #6600EE; font-weight: bold">1</span>);
+                        totalSwaps++;
+
+                    }
+        <span style="color: #008800; font-weight: bold">else</span>
+                    { <span style="color: #888888">//When Matching character found swap until K reaches p2 position</span>
+        <span style="color: #008800; font-weight: bold">while</span> (k &lt; p2)
+                        {
+                            swap(chars, k, k + <span style="color: #6600EE; font-weight: bold">1</span>);
+                            totalSwaps++;
+                            k++;
+                        }
+                        p1++; p2--;
+                    }
+                }
+        <span style="color: #008800; font-weight: bold">else</span>
+                {
+                    p1++; p2--; <span style="color: #888888">//When the characters are equal move on</span>
+                }
+            }
+        <span style="color: #008800; font-weight: bold">return</span> totalSwaps;
+        }
+        <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">return</span> -<span style="color: #6600EE; font-weight: bold">1</span>;
+    }
+
+        <span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">swap</span>(<span style="color: #333399; font-weight: bold">char</span>[] chars, <span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> i)
+    {
+        <span style="color: #333399; font-weight: bold">char</span> temp = chars[k];
+        chars[k] = chars[i];
+        chars[i] = temp;
+    }
+
+        <span style="color: #008800; font-weight: bold">private</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">bool</span> <span style="color: #0066BB; font-weight: bold">isShuffledPalindrome</span>(String s)
+    {
+        <span style="color: #333399; font-weight: bold">int</span>[] occurrence = <span style="color: #008800; font-weight: bold">new</span> <span style="color: #333399; font-weight: bold">int</span>[<span style="color: #6600EE; font-weight: bold">26</span>];
+        <span style="color: #333399; font-weight: bold">int</span> oddCount = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">0</span>; i &lt; s.Length; i++) occurrence[s[i] - <span style="color: #0044DD">&#39;a&#39;</span>]++;
+        <span style="color: #008800; font-weight: bold">foreach</span> (<span style="color: #333399; font-weight: bold">int</span> <span style="color: #008800; font-weight: bold">value</span> <span style="color: #008800; font-weight: bold">in</span> occurrence) <span style="color: #008800; font-weight: bold">if</span> (<span style="color: #008800; font-weight: bold">value</span> % <span style="color: #6600EE; font-weight: bold">2</span> != <span style="color: #6600EE; font-weight: bold">0</span>) oddCount++;
+        <span style="color: #008800; font-weight: bold">return</span> oddCount &lt;= <span style="color: #6600EE; font-weight: bold">1</span>;
+    }
+</pre>
+    </div>
+
+
+
+</div>
+@code {
+    string str = "";
+    int output;
+    string display = "none";
+
+    public void Callswaps()
+    {
+        output = getNoOfSwaps(str);
+        display = "";
+    }
+
+
+    private static int getNoOfSwaps(String s)
+    {
+        if (s == null || s.Length == 0) return -1;
+        int totalSwaps = 0;
+
+        if (isShuffledPalindrome(s))
+        {
+            char[] chars = s.ToCharArray();
+            int p1 = 0, p2 = chars.Length - 1;
+
+            while (p2 > p1)
+            {
+                if (chars[p1] != chars[p2])
+                {
+                    int k = p2;
+                    while (k > p1 && chars[k] != chars[p1]) k--;
+
+                    if (k == p1)
+                    { //When no matching character found
+                        swap(chars, p1, p1 + 1);
+                        totalSwaps++;
+
+                    }
+                    else
+                    { //When Matching character found swap until K reaches p2 position
+                        while (k < p2)
+                        {
+                            swap(chars, k, k + 1);
+                            totalSwaps++;
+                            k++;
+                        }
+                        p1++; p2--;
+                    }
+                }
+                else
+                {
+                    p1++; p2--; //When the characters are equal move on
+                }
+            }
+            return totalSwaps;
+        }
+        else return -1;
+    }
+
+    private static void swap(char[] chars, int k, int i)
+    {
+        char temp = chars[k];
+        chars[k] = chars[i];
+        chars[i] = temp;
+    }
+
+    private static bool isShuffledPalindrome(String s)
+    {
+        int[] occurrence = new int[26];
+        int oddCount = 0;
+
+        for (int i = 0; i < s.Length; i++) occurrence[s[i] - 'a']++;
+        foreach (int value in occurrence) if (value % 2 != 0) oddCount++;
+        return oddCount <= 1;
+    }
+
+
+}
