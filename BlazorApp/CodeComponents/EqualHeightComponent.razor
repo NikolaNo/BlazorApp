@@ -1,9 +1,11 @@
 ﻿@page "/equalheight"
 
 <h3>Min Steps to Make Piles Equal Height</h3>
-<p>Alexa is given n piles of equal or unequal heights.<br />
-In one step, Alexa can remove any number of boxes from the pile which has the maximum height and try to make it equal to the one which is just lower than the maximum height of the stack.<br />
-Determine the minimum number of steps required to make all of the piles equal in height.</p>
+<p>
+    Cortana is given n piles of equal or unequal heights.<br />
+    In one step, Cortana can remove any number of boxes from the pile which has the maximum height and try to make it equal to the one which is just lower than the maximum height of the stack.<br />
+    Determine the minimum number of steps required to make all of the piles equal in height.
+</p>
 <p>
     Input: piles = [5, 2, 1]<br />
     Output: 3<br />
@@ -13,19 +15,72 @@ Determine the minimum number of steps required to make all of the piles equal in
     Step 3: reducing 2 -> 1 [1, 1, 1]<br />
     So final number of steps required is 3.
 </p>
-<p>Input comma delimited numbers(1,2,3,4..)<input type="text" @bind="@input"/></p>
+<p>Input comma delimited numbers(1,2,3,4..) = <input type="text" @bind="@input"/>
+    <button class="btn btn-primary" @onclick="CallSteps"> Get</button></p>
+<hr />
+<p>Output: @output</p>
+<div style="display:@display">
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+        <pre style="margin: 0; line-height: 125%">    <span style="color: #333399; font-weight: bold">string</span> input;
 
+        <span style="color: #333399; font-weight: bold">int</span> output;
+
+        <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">void</span> <span style="color: #0066BB; font-weight: bold">CallSteps</span>()
+    {        
+        <span style="color: #333399; font-weight: bold">string</span>[] words = input.Split(<span style="color: #0044DD">&#39;,&#39;</span>);       
+        <span style="color: #333399; font-weight: bold">int</span>[] myInts = words.Select(<span style="color: #333399; font-weight: bold">int</span>.Parse).ToArray();
+        output = minSteps(myInts);
+    }
+
+        <span style="color: #008800; font-weight: bold">public</span> <span style="color: #008800; font-weight: bold">static</span> <span style="color: #333399; font-weight: bold">int</span> <span style="color: #0066BB; font-weight: bold">minSteps</span>(<span style="color: #333399; font-weight: bold">int</span>[] piles)
+    {
+        <span style="color: #333399; font-weight: bold">int</span> res = <span style="color: #6600EE; font-weight: bold">0</span>;
+        <span style="color: #333399; font-weight: bold">int</span> len = piles.Length;
+        <span style="color: #008800; font-weight: bold">if</span> (len &lt;= <span style="color: #6600EE; font-weight: bold">1</span>) <span style="color: #008800; font-weight: bold">return</span> <span style="color: #6600EE; font-weight: bold">0</span>;
+
+        Array.Sort(piles);
+
+        <span style="color: #333399; font-weight: bold">int</span> distinctNums = <span style="color: #6600EE; font-weight: bold">0</span>;
+
+        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i = <span style="color: #6600EE; font-weight: bold">1</span>; i &lt; len; ++i)
+        {
+        <span style="color: #008800; font-weight: bold">if</span> (piles[i] == piles[i - <span style="color: #6600EE; font-weight: bold">1</span>])
+            {
+                res += distinctNums;
+            }
+            ++distinctNums;
+            res += distinctNums;
+        }
+
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+</pre>
+    </div>
+</div>
 @code {
+
     string input;
+
+    int output;
+
+    string display = "none";
+
+    public void CallSteps()
+    {
+        string[] words = input.Split(',');
+        int[] myInts = words.Select(int.Parse).ToArray();
+        output = minSteps(myInts);
+        display = "";
+    }
 
     public static int minSteps(int[] piles)
     {
+        int res = 0;
         int len = piles.Length;
         if (len <= 1) return 0;
 
         Array.Sort(piles);
 
-        int res = 0;
         int distinctNums = 0;
 
         for (int i = 1; i < len; ++i)
